@@ -1,5 +1,5 @@
 import { Nota } from "../models/Nota.model";
-export default function Notas({ notas }: { notas: Nota[] }) {
+export function Notas({ notas }: { notas: Nota[] }) {
   return (
     <ul>
       {notas.map((nota, index) => (
