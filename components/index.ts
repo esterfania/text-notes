@@ -1,2 +1,3 @@
-export * from "./formulario";
-export * from "./notas";
+export * from "./form";
+export * from "./notes";
+export * from "./card";

@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Notas, Formulario } from "../components/index";
+import { Notes, Form } from "../components/index";
 import { Nota } from "../models/index";
 
-const notas: Nota[] = [
+const notes: Nota[] = [
   { titulo: "Nova nota", texto: "Texto" },
   { titulo: "Nova nota2", texto: "Texto2" },
   { titulo: "Nova nota3", texto: "Texto3" },
@@ -12,8 +12,8 @@ const notas: Nota[] = [
 export default function Home() {
   return (
     <section>
-      <Formulario />
-      <Notas notas={notas} />
+      <Form />
+      <Notes notes={notes} />
     </section>
   );
 }

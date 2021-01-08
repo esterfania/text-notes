@@ -1,4 +1,4 @@
-export function Formulario() {
+export function Form() {
   return (
     <form>
       <fieldset>
