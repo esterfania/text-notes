@@ -1,3 +1,3 @@
-export * from "./Form/Form";
-export * from "./Notes/Notes";
-export * from "./Card/Card";
+export * from "./form/form";
+export * from "./notes/notes";
+export * from "./card/card";

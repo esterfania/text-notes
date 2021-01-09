@@ -1,4 +1,4 @@
-import styles from "../../styles/Card.module.scss";
+import styles from "./card.module.scss";
 export function Card({ note }) {
   return (
     <section className={`${styles.card}`}>

@@ -1,5 +1,5 @@
 import { Note } from "../../models/Note.model";
-import { Card } from "../Card/Card";
+import { Card } from "../card/card";
 export function Notes({ notes }: { notes: Note[] }) {
   return (
     <ul>
