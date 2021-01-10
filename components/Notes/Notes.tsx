@@ -1,4 +1,4 @@
-import { Note } from "../../models/Note.model";
+import { Note } from "../../models/note.model";
 import { Card } from "../card/card";
 export function Notes({ notes }: { notes: Note[] }) {
   return (
