@@ -10,7 +10,6 @@ I used the following technologies: **TypeScript, Next JS, Jest, Enzyme, SCSS, Pr
 
 How to run:
 
-To start:
 ```
 npm run dev
 ```
