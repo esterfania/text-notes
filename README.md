@@ -4,7 +4,7 @@
 
 This application was created to study React and Next JS. It is an application that allows you to create notes dynamically.
 
-I used the following technologies: TypeScript, Next JS, Jest, enzyme, SCSS, prettier and ESLint.
+I used the following technologies: **TypeScript, Next JS, Jest, enzyme, SCSS, prettier and ESLint**.
 
 How to run:
 
