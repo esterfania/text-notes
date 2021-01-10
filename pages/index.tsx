@@ -11,6 +11,7 @@ interface IHomeState {
 export default class Home extends Component<IHomeProps, IHomeState> {
     constructor(props) {
         super(props);
+
         this.state = {
             notes: []
         };
@@ -26,9 +27,10 @@ export default class Home extends Component<IHomeProps, IHomeState> {
     }
 
     private createNotes(note: Note) {
-        const newArrayNotes = [...this.state.notes, note];
+        const newObject = { titulo: note.titulo, texto: note.texto };
+        const newArrayOfNotes = [...this.state.notes, newObject];
         this.setState({
-            notes: newArrayNotes
+            notes: newArrayOfNotes
         });
     }
 }
