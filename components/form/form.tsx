@@ -32,7 +32,9 @@ export class Form extends Component<INoteProps> {
                         onChange={this.handlerChangeText.bind(this)}
                         className={styles.form__input}
                     />
-                    <button className={styles.btn} type="submit">Criar nota</button>
+                    <button className={styles.btn} type="submit">
+                        Criar nota
+                    </button>
                 </fieldset>
             </form>
         );
