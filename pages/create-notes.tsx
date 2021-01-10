@@ -27,7 +27,7 @@ export default class CreateNotes extends Component<INotesProps, INotesState> {
     }
 
     private createNotes(note: Note): void {
-        const newObject = { titulo: note.titulo, texto: note.texto };
+        const newObject = { title: note.title, text: note.text };
         const newArrayOfNotes = [...this.state.notes, newObject];
         this.setState({
             notes: newArrayOfNotes
