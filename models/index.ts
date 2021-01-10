@@ -1,1 +1,1 @@
-export * from "./note.model";
+export * from './note.model';
