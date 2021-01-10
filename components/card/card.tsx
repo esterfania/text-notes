@@ -3,11 +3,11 @@ import styles from './card.module.scss';
 
 export function Card({ note }: { note: Note }): JSX.Element {
     return (
-        <article className={styles.card}>
-            <header className={styles.card__header}>
+        <div className={styles.card}>
+            <article className={styles.card__item}>
                 <h3 className={styles.card__title}>{note.titulo}</h3>
-            </header>
-            <p className={styles.card__intro}>{note.texto}</p>
-        </article>
+                <p className={styles.card__text}>{note.texto}</p>
+            </article>
+        </div>
     );
 }

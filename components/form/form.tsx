@@ -1,7 +1,7 @@
 import { ChangeEvent, Component, FormEvent } from 'react';
 
 import { Note } from '../../models/note.model';
-
+import styles from './form.module.scss';
 interface INoteProps {
     createNotes: any;
 }
@@ -16,21 +16,23 @@ export class Form extends Component<INoteProps> {
 
     render(): JSX.Element {
         return (
-            <form onSubmit={this.createNotes.bind(this)}>
-                <fieldset>
+            <form className={styles.form} onSubmit={this.createNotes.bind(this)}>
+                <fieldset className={styles.form__field}>
                     <input
                         type="text"
                         name="titulo"
                         placeholder="Título"
                         onChange={this.handlerChangeTitle.bind(this)}
+                        className={styles.form__input}
                     />
                     <textarea
                         name="texto"
                         rows={15}
                         placeholder="Escreva sua nota..."
                         onChange={this.handlerChangeText.bind(this)}
+                        className={styles.form__input}
                     />
-                    <button type="submit">Criar nota</button>
+                    <button className={styles.btn} type="submit">Criar nota</button>
                 </fieldset>
             </form>
         );
