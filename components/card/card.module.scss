@@ -1,0 +1,41 @@
+@use '../styles/vars';
+.card {
+    display: inline-block;
+    width: 100%;
+    max-width: 350px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    text-align: left;
+    background: vars.$card-background-color;
+    box-shadow: vars.$box-shadow--default;
+    padding: 20px;
+    word-break: break-all;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: vars.$box-shadow--hover;
+    }
+
+    &__header {
+        margin-bottom: 5px;
+    }
+
+    &__title {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+    }
+
+    &__intro {
+        margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+    }
+}
