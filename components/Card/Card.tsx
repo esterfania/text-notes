@@ -1,4 +1,5 @@
 import styles from './card.module.scss';
+
 export function Card({ note }): JSX.Element {
     return (
         <section className={`${styles.card}`}>

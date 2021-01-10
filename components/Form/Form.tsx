@@ -2,20 +2,21 @@ import { ChangeEvent, Component, FormEvent } from 'react';
 
 import { Note } from '../../models/note.model';
 
-export class Form extends Component {
+interface INoteProps {
+    createNotes: any;
+}
+
+export class Form extends Component<INoteProps> {
     private note: Note;
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
         this.note = { titulo: '', texto: '' };
     }
 
-    handlerCleateNote(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-    }
     render() {
         return (
-            <form onSubmit={this.handlerCleateNote.bind(this)}>
+            <form onSubmit={this.createNotes.bind(this)}>
                 <fieldset>
                     <label placeholder="Título"></label>
                     <input
@@ -27,6 +28,7 @@ export class Form extends Component {
                     <label placeholder="Insira seu texto"></label>
                     <textarea
                         name="texto"
+                        rows={15}
                         placeholder="Escreva sua nota..."
                         onChange={this.handlerChangeText.bind(this)}
                     />
@@ -35,10 +37,18 @@ export class Form extends Component {
             </form>
         );
     }
+
     private handlerChangeTitle(event: ChangeEvent<HTMLInputElement>) {
         this.note.titulo = event.target.value;
     }
+
     private handlerChangeText(event: ChangeEvent<HTMLTextAreaElement>) {
         this.note.texto = event.target.value;
+    }
+
+    private createNotes(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.props.createNotes(this.note);
     }
 }
