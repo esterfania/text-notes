@@ -9,7 +9,7 @@ interface IHomeState {
     notes: Note[];
 }
 export default class Home extends Component<IHomeProps, IHomeState> {
-    constructor(props) {
+    constructor(props: IHomeProps) {
         super(props);
 
         this.state = {
@@ -17,7 +17,7 @@ export default class Home extends Component<IHomeProps, IHomeState> {
         };
     }
 
-    render() {
+    render(): JSX.Element {
         return (
             <section>
                 <Form createNotes={this.createNotes.bind(this)} />
@@ -26,7 +26,7 @@ export default class Home extends Component<IHomeProps, IHomeState> {
         );
     }
 
-    private createNotes(note: Note) {
+    private createNotes(note: Note): void {
         const newObject = { titulo: note.titulo, texto: note.texto };
         const newArrayOfNotes = [...this.state.notes, newObject];
         this.setState({

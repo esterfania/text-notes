@@ -9,23 +9,21 @@ interface INoteProps {
 export class Form extends Component<INoteProps> {
     private note: Note;
 
-    constructor(props: any) {
+    constructor(props: INoteProps) {
         super(props);
         this.note = { titulo: '', texto: '' };
     }
 
-    render() {
+    render(): JSX.Element {
         return (
             <form onSubmit={this.createNotes.bind(this)}>
                 <fieldset>
-                    <label placeholder="Título"></label>
                     <input
                         type="text"
                         name="titulo"
                         placeholder="Título"
                         onChange={this.handlerChangeTitle.bind(this)}
                     />
-                    <label placeholder="Insira seu texto"></label>
                     <textarea
                         name="texto"
                         rows={15}
@@ -38,15 +36,15 @@ export class Form extends Component<INoteProps> {
         );
     }
 
-    private handlerChangeTitle(event: ChangeEvent<HTMLInputElement>) {
+    private handlerChangeTitle(event: ChangeEvent<HTMLInputElement>): void {
         this.note.titulo = event.target.value;
     }
 
-    private handlerChangeText(event: ChangeEvent<HTMLTextAreaElement>) {
+    private handlerChangeText(event: ChangeEvent<HTMLTextAreaElement>): void {
         this.note.texto = event.target.value;
     }
 
-    private createNotes(event: FormEvent<HTMLFormElement>) {
+    private createNotes(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault();
         event.stopPropagation();
         this.props.createNotes(this.note);

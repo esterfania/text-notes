@@ -1,6 +1,7 @@
+import { Note } from '../../models';
 import styles from './card.module.scss';
 
-export function Card({ note }): JSX.Element {
+export function Card({ note }: { note: Note }): JSX.Element {
     return (
         <section className={`${styles.card}`}>
             <header>

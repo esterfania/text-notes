@@ -32,6 +32,8 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'react/prop-types': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error',
         'jsx-a11y/anchor-is-valid': [
