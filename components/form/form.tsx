@@ -28,12 +28,12 @@ export class Form extends Component<INoteProps> {
                     <textarea
                         name="text"
                         rows={15}
-                        placeholder="write your note..."
+                        placeholder="Write your note..."
                         onChange={this.handlerChangeText.bind(this)}
                         className={styles.form__input}
                     />
                     <button className={styles.btn} type="submit">
-                        Criar nota
+                        CREATE
                     </button>
                 </fieldset>
             </form>
