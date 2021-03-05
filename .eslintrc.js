@@ -28,20 +28,19 @@ module.exports = {
         'plugin:prettier/recommended' // Make sure this is always the last element in the array.
     ],
     rules: {
-        'prettier/prettier': ['error', {}, { usePrettierrc: true }],
-        'react/react-in-jsx-scope': 'off',
         'react/prop-types': 'off',
-        '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/no-empty-interface': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-        'simple-import-sort/imports': 'error',
-        'simple-import-sort/exports': 'error',
-        'jsx-a11y/anchor-is-valid': [
+
+        'react/react-in-jsx-scope': 'off',
+
+        'jsx-a11y/anchor-is-valid': 'off',
+
+        '@typescript-eslint/no-unused-vars': ['error'],
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        'prettier/prettier': [
             'error',
             {
-                components: ['Link'],
-                specialLink: ['hrefLeft', 'hrefRight'],
-                aspects: ['invalidHref', 'preferButton']
+                endOfLine: 'auto'
             }
         ]
     },
