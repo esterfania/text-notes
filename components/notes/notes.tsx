@@ -2,7 +2,7 @@ import { Note } from '../../models';
 import { Card } from '../card/card';
 import styles from './notes.module.scss';
 interface NotesProps {
-    deleteNotes: () => void;
+    deleteNotes: (index: number) => void;
     notes: Note[];
 }
 export function Notes(props: NotesProps): JSX.Element {

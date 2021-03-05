@@ -1,42 +1,28 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
 import { Form, Notes } from '../components/index';
 import { Note } from '../models/index';
 import style from '../styles/Notes.module.scss';
 
-interface INotesProps {}
+export function CreateNotes() {
+    const [notes, setNotes] = useState([]);
 
-interface INotesState {
-    notes: Note[];
-}
-export default class CreateNotes extends Component<INotesProps, INotesState> {
-    constructor(props: INotesProps) {
-        super(props);
+    const deleteNotes = (index: number) => {
+        const newArrayOfNotes = [...notes];
+        newArrayOfNotes.splice(index, 1);
+        setNotes(newArrayOfNotes);
+    };
 
-        this.state = {
-            notes: []
-        };
-    }
-    private deleteNotes(index: number) {
-        const arrayNotes = this.state.notes;
-        arrayNotes.splice(index, 1);
-        this.setState({ notes: arrayNotes });
-    }
+    const createNotes = (note: Note) => {
+        const newObject = { ...note };
+        const newArrayOfNotes = [...notes, newObject];
+        setNotes(newArrayOfNotes);
+    };
 
-    render(): JSX.Element {
-        return (
-            <section className={style.container}>
-                <Form createNotes={this.createNotes.bind(this)} />
-                <Notes deleteNotes={this.deleteNotes.bind(this)} notes={this.state.notes} />
-            </section>
-        );
-    }
-
-    private createNotes(note: Note): void {
-        const newObject = { title: note.title, text: note.text };
-        const newArrayOfNotes = [...this.state.notes, newObject];
-        this.setState({
-            notes: newArrayOfNotes
-        });
-    }
+    return (
+        <section className={style.container}>
+            <Form createNotes={createNotes} />
+            <Notes deleteNotes={deleteNotes} notes={notes} />
+        </section>
+    );
 }

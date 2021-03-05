@@ -1,56 +1,50 @@
-import { ChangeEvent, Component, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 import { Note } from '../../models/note.model';
 import styles from './form.module.scss';
 interface INoteProps {
-    createNotes: any;
+    createNotes: (note: Note) => void;
 }
 
-export class Form extends Component<INoteProps> {
-    private note: Note;
+export function Form(props: INoteProps) {
+    const [title, setTitle] = useState(null);
+    const [text, setText] = useState(null);
 
-    constructor(props: INoteProps) {
-        super(props);
-        this.note = { title: '', text: '' };
-    }
+    const handlerChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
+        setTitle(event.target.value);
+    };
 
-    render(): JSX.Element {
-        return (
-            <form className={styles.form} onSubmit={this.createNotes.bind(this)}>
-                <fieldset className={styles.form__field}>
-                    <input
-                        type="text"
-                        name="title"
-                        placeholder="Title"
-                        onChange={this.handlerChangeTitle.bind(this)}
-                        className={styles.form__input}
-                    />
-                    <textarea
-                        name="text"
-                        rows={15}
-                        placeholder="Write your note..."
-                        onChange={this.handlerChangeText.bind(this)}
-                        className={styles.form__input}
-                    />
-                    <button className={styles.btn} type="submit">
-                        CREATE
-                    </button>
-                </fieldset>
-            </form>
-        );
-    }
+    const handlerChangeText = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        setText(event.target.value);
+    };
 
-    private handlerChangeTitle(event: ChangeEvent<HTMLInputElement>): void {
-        this.note.title = event.target.value;
-    }
-
-    private handlerChangeText(event: ChangeEvent<HTMLTextAreaElement>): void {
-        this.note.text = event.target.value;
-    }
-
-    private createNotes(event: FormEvent<HTMLFormElement>): void {
+    const createNotes = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         event.stopPropagation();
-        this.props.createNotes(this.note);
-    }
+        props.createNotes({ title, text });
+    };
+
+    return (
+        <form className={styles.form} onSubmit={createNotes}>
+            <fieldset className={styles.form__field}>
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    onChange={handlerChangeTitle}
+                    className={styles.form__input}
+                />
+                <textarea
+                    name="text"
+                    rows={15}
+                    placeholder="Write your note..."
+                    onChange={handlerChangeText}
+                    className={styles.form__input}
+                />
+                <button className={styles.btn} type="submit">
+                    CREATE
+                </button>
+            </fieldset>
+        </form>
+    );
 }
