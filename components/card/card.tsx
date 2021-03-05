@@ -1,13 +1,25 @@
 import { Note } from '../../models';
 import styles from './card.module.scss';
-
-export function Card({ note }: { note: Note }): JSX.Element {
+interface CardProps {
+    deleteNotes: (index: number) => void;
+    note: Note;
+    index: number;
+}
+export function Card(props: CardProps): JSX.Element {
+    const handleDelete = () => {
+        props.deleteNotes(props.index);
+    };
     return (
-        <div className={styles.card}>
-            <article className={styles.card__item}>
-                <h3 className={styles.card__title}>{note.title}</h3>
-                <p className={styles.card__text}>{note.text}</p>
-            </article>
-        </div>
+        <section className={styles.card}>
+            <header className={styles.card__item}>
+                <h3 className={styles.card__title}>
+                    {props.note.title}{' '}
+                    <button className={styles.card__button} onClick={handleDelete}>
+                        X
+                    </button>
+                </h3>
+                <p className={styles.card__text}>{props.note.text}</p>
+            </header>
+        </section>
     );
 }

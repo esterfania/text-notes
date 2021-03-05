@@ -1,12 +1,16 @@
 import { Note } from '../../models';
 import { Card } from '../card/card';
 import styles from './notes.module.scss';
-export function Notes({ notes }: { notes: Note[] }): JSX.Element {
+interface NotesProps {
+    deleteNotes: () => void;
+    notes: Note[];
+}
+export function Notes(props: NotesProps): JSX.Element {
     return (
         <ul className={styles.container}>
-            {notes.map((note, index) => (
-                <li key={index}>
-                    <Card note={note}></Card>
+            {props.notes.map((note, index) => (
+                <li className={styles.item} key={index}>
+                    <Card index={index} deleteNotes={props.deleteNotes} note={note}></Card>
                 </li>
             ))}
         </ul>

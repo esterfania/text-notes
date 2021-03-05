@@ -2,6 +2,7 @@ import { Component } from 'react';
 
 import { Form, Notes } from '../components/index';
 import { Note } from '../models/index';
+import style from '../styles/Notes.module.scss';
 
 interface INotesProps {}
 
@@ -16,12 +17,17 @@ export default class CreateNotes extends Component<INotesProps, INotesState> {
             notes: []
         };
     }
+    private deleteNotes(index: number) {
+        const arrayNotes = this.state.notes;
+        arrayNotes.splice(index, 1);
+        this.setState({ notes: arrayNotes });
+    }
 
     render(): JSX.Element {
         return (
-            <section>
+            <section className={style.container}>
                 <Form createNotes={this.createNotes.bind(this)} />
-                <Notes notes={this.state.notes} />
+                <Notes deleteNotes={this.deleteNotes.bind(this)} notes={this.state.notes} />
             </section>
         );
     }
