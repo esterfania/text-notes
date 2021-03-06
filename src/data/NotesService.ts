@@ -1,28 +1,40 @@
-export default class NotesService {
-    notes = [];
-    _inscritos = [];
+import { useState, useEffect } from 'react';
+export default function NotesService() {
+    const [notes, setNotes] = useState([]);
+    const [subscribers, setSubscribers] = useState([]);
 
-    createNotes(note) {
-        const novaNota = { ...note };
-        this.notes.push(novaNota);
-        this.notificar();
+    useEffect(() => {
+        emit();
+    }, [notes]);
+
+    function createNotes(note) {
+        const newObject = { ...note };
+        const newArrayOfNotes = [...notes, newObject];
+        setNotes(newArrayOfNotes);
     }
 
-    deleteNotes(index) {
-        this.notes.splice(index, 1);
-        this.notificar();
+    function deleteNotes(index) {
+        const newNotes = notes.filter((item, i) => i != index);
+        setNotes(newNotes);
     }
 
-    subscribe(func) {
-        this._inscritos.push(func);
+    function subscribe(func) {
+        subscribers.push(func);
     }
-    unsubscribe(func) {
-        this._inscritos = this._inscritos.filter((f) => f !== func);
+    function unsubscribe(func) {
+        setSubscribers(subscribers.filter((f) => f !== func));
     }
 
-    notificar() {
-        this._inscritos.forEach((func) => {
-            func(this.notes);
+    function emit() {
+        subscribers.forEach((func) => {
+            func(notes);
         });
     }
+
+    return {
+        createNotes,
+        deleteNotes,
+        subscribe,
+        unsubscribe
+    };
 }
