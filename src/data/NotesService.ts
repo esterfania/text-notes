@@ -19,7 +19,7 @@ export default function NotesService() {
     }
 
     function subscribe(func) {
-        subscribers.push(func);
+        setSubscribers([...subscribers, func]);
     }
     function unsubscribe(func) {
         setSubscribers(subscribers.filter((f) => f !== func));
